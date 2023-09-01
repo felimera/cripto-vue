@@ -1,30 +1,28 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import { ref } from 'vue';
+
+const monedas = ref([
+  { codigo: 'USD', texto: 'Dolar de Estados Unidos' },
+  { codigo: 'MXN', texto: 'Peso Mexicano' },
+  { codigo: 'EUR', texto: 'Euro' },
+  { codigo: 'GBP', texto: 'Libra Esterlina' },
+]);
+
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="contenedor">
+    <h1 class="titulo">Cotizador de <span>Criptomonedas</span></h1>
+    <div class="contenido">
+      <form class="formulario">
+        <div class="campo">
+          <label for="moneda">Moneda:</label>
+          <select id="moneda">
+            <option value="">-- Selecciona --</option>
+            <option v-for="moneda in monedas" :value="moneda.codigo">{{ moneda.texto }}</option>
+          </select>
+        </div>
+      </form>
+    </div>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
-
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
